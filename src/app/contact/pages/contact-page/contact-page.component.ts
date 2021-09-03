@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-page',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class ContactPageComponent implements OnInit {
 
   completed: boolean = false;
+  contactUsTitle: string = "My Contact Us";
+  form: FormGroup | null = null;
 
   constructor() { }
 

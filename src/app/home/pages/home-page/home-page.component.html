@@ -16,8 +16,8 @@
       <div class="col-lg col-12 mt-2">
         <div class="card h-100">
           <div class="card-body d-flex flex-column">
-            <h6>{{ blog.title | titlecase | slice:0:30 }} ...</h6>
-            <p class="flex-grow-1 flex-fill text-muted">{{ blog.body | slice:0:75 }}<span>...</span></p>
+            <h6>{{ blog.title | titlecase | truncate:30 }}</h6>
+            <p class="flex-grow-1 flex-fill text-muted">{{ blog.body | truncate:75 }}</p>
             <button class="btn btn-light btn-sm" [routerLink]="['/blog', blog.id, blog.title]">
               read more
             </button>
@@ -27,7 +27,7 @@
     </ng-container>
   </div>
   <div class="mt-2">
-    <a class="btn btn-sm btn-default" routerLink="/blog">More posts are available here
+    <a class="btn btn-sm btn-default" routerLink="/blog" animateBounceMe>More posts are available here
       <svg class="d-inline" style="height: 1rem; width: 1rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 100">
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">

@@ -1,19 +1,25 @@
-<div class="form">
+<h1>{{ title }}</h1>
+
+<form *ngIf="contactForm" [formGroup]="contactForm" (ngSubmit)="execute()">
   <div class="form-group">
     <label>Full Name</label>
-    <input type="text" class="form-control" [(ngModel)]="model.fullName">
+    <input type="text" formControlName="fullName" class="form-control">
+    <div class="text-danger" *ngIf="contactForm.get('fullName')!.touched && contactForm.get('fullName')!.errors?.required">Message is required</div>
     <div class="text-danger">{{ lastErrors.fullName }}</div>
   </div>
 
   <div class="form-group">
     <label>Email</label>
-    <input type="email" class="form-control" [(ngModel)]="model.email">
+    <input type="email" formControlName="email" class="form-control">
+    <div class="text-danger" *ngIf="contactForm.get('email')!.errors?.email">Email is not valid</div>
+    <div class="text-danger" *ngIf="contactForm.get('email')!.touched && contactForm.get('email')!.errors?.required">Email is required</div>
     <div class="text-danger">{{ lastErrors.email }}</div>
   </div>
 
   <div class="form-group">
     <label>Message</label>
-    <textarea rows="10" class="form-control" [(ngModel)]="model.message"></textarea>
+    <textarea rows="10" formControlName="message" class="form-control"></textarea>
+    <div class="text-danger" *ngIf="contactForm.get('message')!.touched && contactForm.get('message')!.errors?.required">Message is required</div>
     <div class="text-danger">{{ lastErrors.message }}</div>
   </div>
 
@@ -22,10 +28,10 @@
   </div>
 
   <div class="mt-2">
-    <button *ngIf="!loading" class="btn btn-primary btn-sm" (click)="execute()">
-      Send
+    <button [disabled]="isLoadingOrInvalid" type="submit" class="btn btn-primary btn-sm">
+        Send
     </button>
 
     <app-loader *ngIf="loading"></app-loader>
   </div>
-</div>
+</form>
