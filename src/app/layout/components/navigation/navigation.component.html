@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Woot!</a>
+    <div class="navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngFor="let ni of navigation">
+          <a class="nav-link" 
+            routerLinkActive="active text-primary" 
+            [routerLinkActiveOptions]="{exact: true}" 
+            [routerLink]="ni.path">
+            {{ ni.title }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

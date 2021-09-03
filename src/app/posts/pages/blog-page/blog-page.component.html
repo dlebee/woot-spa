@@ -1,0 +1,17 @@
+<ng-container *ngIf="blog$ | async as blog; else myLoading">
+  <nav aria-label="breadcrumb" class="bg-dark px-2 pt-2 pb-2">
+    <ol class="breadcrumb m-0">
+      <li class="breadcrumb-item text-white"><a routerLink="/blog">Blogs</a></li>
+      <li class="breadcrumb-item text-white active" aria-current="page">{{blog.title | titlecase }}</li>
+    </ol>
+  </nav>
+  <div class="container pt-2">
+    <h1>{{ blog.title | titlecase }}</h1>
+    <p>{{ blog.body }}</p>
+  </div>
+
+</ng-container>
+
+<ng-template #myLoading>
+    <app-loader></app-loader>
+</ng-template>

@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="text-center pt-5">Contact Us Page</h1>
+  <hr>
+
+  <ng-container *ngIf="!completed; else thankYou">
+    <app-contact-form (completed)="completed = true">
+
+    </app-contact-form>
+  </ng-container>
+
+  <ng-template #thankYou>
+    <p class="alert alert-success">Thank you for getting in touch with us, we will contact you shortly.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Welcome</h1>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque inventore labore culpa consequatur eius eligendi,
+    quod quibusdam dolor deserunt facilis voluptatum unde cumque, doloremque alias nobis minus tempora numquam. Dolorem
+    cupiditate doloremque excepturi, libero quo molestias. Eveniet mollitia fugiat saepe nemo consequuntur corporis ipsa
+    tenetur ratione odio consectetur, error possimus sequi cupiditate repudiandae voluptas nulla sed fuga et delectus
+    eaque, assumenda voluptates laudantium. Facere blanditiis cumque rem sit eius expedita consectetur ut voluptas,
+    totam exercitationem. Nulla unde voluptas suscipit corporis illum rerum esse itaque et necessitatibus reiciendis
+    sint consectetur sit corrupti vero ex, dolor amet fuga perferendis. Asperiores, fuga odit.
+  </p>
+
+  <h1>Latest Posts</h1>
+  <div class="row">
+    <ng-container *ngFor="let blog of latestBlogs$ | async">
+      <div class="col-lg col-12 mt-2">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <h6>{{ blog.title | titlecase | slice:0:30 }} ...</h6>
+            <p class="flex-grow-1 flex-fill text-muted">{{ blog.body | slice:0:75 }}<span>...</span></p>
+            <button class="btn btn-light btn-sm" [routerLink]="['/blog', blog.id, blog.title]">
+              read more
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="mt-2">
+    <a class="btn btn-sm btn-default" routerLink="/blog">More posts are available here
+      <svg class="d-inline" style="height: 1rem; width: 1rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 100">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" />
+          </marker>
+        </defs>
+        <line x1="0" y1="50" x2="250" y2="50" stroke="#000" stroke-width="8" marker-end="url(#arrowhead)" />
+      </svg>
+    </a>
+  </div>
+
+</div>
